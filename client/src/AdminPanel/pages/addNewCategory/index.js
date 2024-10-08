@@ -12,16 +12,27 @@ const AddNewCategory = ({ categories, subCategories }) => {
     
     if (formType === 'category') {
       try {
-        const { categoryName, categoryDiscription } = data
-         (categoryDiscription, categoryName)
-        const res = await axios.post('http://localhost:5000/api/categories/categories', { categoryName, categoryDiscription })
-        alert('Category added successfully')
-        window.location.href = '/admin/categories'
-      }
-      catch (error) {
-        alert(`Error adding category: ${error?.status === 400 && 'Catogery already exist'}`)
-        window.location.reload()
-      }
+        console.log("hello");
+        
+        // Assuming 'data' is an object that contains 'categoryName' and 'categoryDiscription'
+        const { categoryName, categoryDiscription } = data; // No need to pass anything to 'data'
+    
+        // Ensure 'categoryName' and 'categoryDiscription' exist and are initialized
+        if (!categoryName || !categoryDiscription) {
+            throw new Error('Category name and description are required');
+        }
+    
+        const res = await axios.post('http://localhost:5000/api/categories/categories', {
+            categoryName,
+            categoryDiscription,
+        });
+    
+        alert('Category added successfully');
+        window.location.href = '/admin/categories';  // Redirect on success
+    } catch (error) {
+        console.error('Error:', error);
+        alert(`Failed to add category: ${error.message}`);
+    }
     } else if (formType === 'subcategory') {
       try {
         const { parentCategory, subcategoryName, subcategoryDescription } = data

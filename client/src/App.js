@@ -46,6 +46,7 @@ const App = () => {
   
 
   const user = JSON.parse(localStorage.getItem('user'));
+  console.log(categories)
   
   
 
@@ -112,7 +113,7 @@ const App = () => {
         <Route path='/' element={<CombineMNF categories={categories} subCategories={subCategories} subSubCategories={subSubCategories} products={products}><Home categories={categories} cart={cartItems} setCart={setCartItemsapp} subCategories={subCategories} subSubCategories={subSubCategories} products={products} /></CombineMNF>} />
         <Route path='/cart' element={<CombineMNF categories={categories} subCategories={subCategories} subSubCategories={subSubCategories} products={products}><Cart cart={cartItems} setCart={setCartItemsapp} /></CombineMNF>} />
         <Route path='/viewproducts/:id' element={<CombineMNF categories={categories} subCategories={subCategories} subSubCategories={subSubCategories} products={products}><ViewProducts cart={cartItems} setCart={setCartItemsapp} categories={categories} subCategories={subCategories} subSubCategories={subSubCategories} products={products} /></CombineMNF>} />
-        <Route path='/authentication' element={<ProtectedRoute user={!user} failingNavigator={"/"} ><CombineMNF categories={categories} subCategories={subCategories} subSubCategories={subSubCategories} products={products}><Authentication /></CombineMNF></ProtectedRoute>} />
+        <Route path='/authentication' element={<CombineMNF categories={categories} subCategories={subCategories} subSubCategories={subSubCategories} products={products}><Authentication /></CombineMNF>} />
         <Route path='/admin/*' element={<AdminPanel categories={categories} subCategories={subCategories} subSubCategories={subSubCategories} products={products} />} />
       </Routes>
     </Suspense>

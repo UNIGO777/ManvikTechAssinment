@@ -15,7 +15,7 @@ const ViewProductsHeader = ({ category, products,cart,setCart }) => {
     });
    
     
-    const filterCatogoryProducts = products.filter((item)=> item?.subSubcategory._id === category[0]._id)
+    const filterCatogoryProducts = products.filter((item)=> item?.subSubcategory?._id === category[0]._id)
    
     const handleFilterChange = (e) => {
         const { name, value } = e.target;

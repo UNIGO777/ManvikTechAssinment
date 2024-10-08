@@ -11,7 +11,7 @@ const ViewProducts = ({ categories, subCategories, subSubCategories, products,ca
 
   
     
-    const filteredSubSubCategories = subSubCategories.filter(subSubCategory => subSubCategory._id === categoryId);
+    const filteredSubSubCategories = subSubCategories.filter(subSubCategory => subSubCategory?._id === categoryId);
 
     return (
         <>
